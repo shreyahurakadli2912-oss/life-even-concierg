@@ -8,7 +8,7 @@ metadata:
 
 runtime:
   type: docker
-  image: "docker.io/yourusername/life-event-concierge:1.0.0" # Replace 'yourusername' with your Docker Hub username
+  image: "ghcr.io/shreyahurakadli2912-oss/life-even-concierg:1.0.0"
   command: ["python", "entrypoint_aikart.py"]
 
 resources:
