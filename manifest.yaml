@@ -1,0 +1,40 @@
+apiVersion: aikart.dev/v1
+kind: AgentManifest
+
+metadata:
+  name: life-event-concierge
+  displayName: "Life Event Concierge"
+  description: "Agentic AI Citizen-Service Orchestration Platform for guiding users through major life events, required documents, and action items."
+
+runtime:
+  type: docker
+  image: "docker.io/yourusername/life-event-concierge:1.0.0" # Replace 'yourusername' with your Docker Hub username
+  command: ["python", "entrypoint_aikart.py"]
+
+resources:
+  cpu: 1
+  memoryMb: 2048
+  timeoutSeconds: 120
+
+inputs:
+  - name: user_input
+    label: "Describe your Life Event or Question"
+    type: textarea
+    required: true
+  - name: event_category
+    label: "Event Category"
+    type: select
+    required: false
+    options:
+      - "Child Birth / Newborn"
+      - "Death in Family"
+      - "Senior Citizen Benefits"
+    default: "Child Birth / Newborn"
+
+output:
+  format: markdown
+
+security:
+  networkEgress: allowlist
+  egressAllowlist:
+    - "generativelanguage.googleapis.com"
